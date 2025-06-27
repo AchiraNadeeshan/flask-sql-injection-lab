@@ -75,7 +75,7 @@ pip install flask
 * ✅ Test exploits using:
 
   * `' OR '1'='1`
-  * `% OR '1'='1`
+  * `' OR '1'='1`
 * ✅ Fix vulnerabilities using parameterized queries
 
 
