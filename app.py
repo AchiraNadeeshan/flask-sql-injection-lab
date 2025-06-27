@@ -30,9 +30,10 @@ def login():
         conn = sqlite3.connect('users.db')
         cursor = conn.cursor()
 
-        # 🚨 Vulnerable SQL query (prone to SQL Injection)
-        query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
-        cursor.execute(query)
+        # Vulnerable SQL query (prone to SQL Injection)
+        query = f"SELECT * FROM users WHERE username = ? AND password = ?"
+        cursor.execute(query, (username, password))
+        # Note: The above query is safe from SQL injection due to parameterization.
         user = cursor.fetchone()
         conn.close()
 
@@ -52,9 +53,9 @@ def search():
         conn = sqlite3.connect('users.db')
         cursor = conn.cursor()
 
-        # 🚨 Vulnerable SQL query (prone to SQL Injection)
-        query = f"SELECT username FROM users WHERE username LIKE '%{search_term}%'"
-        cursor.execute(query)
+        # Vulnerable SQL query (prone to SQL Injection)
+        query = f"SELECT username FROM users WHERE username LIKE ?"
+        cursor.execute(query, (f'%{search_term}%',))
         results = cursor.fetchall()
         conn.close()
 

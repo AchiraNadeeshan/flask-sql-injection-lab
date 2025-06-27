@@ -74,7 +74,7 @@ pip install flask
 * ✅ Implement `/login` and `/search` routes using unsafe queries
 * ✅ Test exploits using:
 
-  * `' OR '1'='1`
+  * `admin' OR '1'='1`
   * `' OR '1'='1`
 * ✅ Fix vulnerabilities using parameterized queries
 
